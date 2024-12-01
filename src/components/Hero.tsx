@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const Hero: FC = () => {
   return (
-    <section className="relative flex flex-col items-center bg-gradient-to-r from-white via-white to-[#f4f3d4] pt-32 pb-10">
+    <section className="relative flex flex-col items-center bg-gradient-to-r from-white via-white to-[#f4f3d4] pt-32 pb-10" id="home">
       <div className="container mx-auto px-8 text-center flex flex-col items-center justify-center mb-20">
         <h2 className="text-6xl font-anta font-semibold text-orange-500 mb-6">
           Si-Tech Solar

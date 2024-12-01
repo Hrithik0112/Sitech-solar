@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const Projects: React.FC = () => {
   return (
-    <section className="py-16">
+    <section className="py-16" id="projects">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between h-full gap-x-8">
           {/* Left Content */}
