@@ -37,7 +37,7 @@ const FAQ: FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16">
       <div className="container mx-auto px-8 flex flex-col max-w-[700px]">
         <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
         <div className="space-y-4">
