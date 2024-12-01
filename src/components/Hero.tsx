@@ -9,10 +9,10 @@ const Hero: FC = () => {
         <h2 className="text-6xl font-anta font-semibold text-orange-500 mb-6">
           Si-Tech Solar
         </h2>
-        <h1 className="text-5xl mb-4 font-light tracking-tight">
+        <h1 className="md:text-5xl text-3xl mb-4 font-light tracking-tight">
           Leading the Future of Solar Energy Solutions
         </h1>
-        <p className="text-5xl  mb-8 font-light tracking-tight">
+        <p className="md:text-5xl text-3xl mb-8 font-light tracking-tight">
           The Best Solar Power Provider in KSA
         </p>
         <Link to="/contact">
@@ -32,10 +32,10 @@ const Hero: FC = () => {
         />
       </div>
       {/* orange color dot */}
-      <div className="absolute top-40 left-1/4 size-2 bg-orange-500 rounded-full"></div>
-      <div className="absolute top-1/3 right-56 size-[14px] bg-orange-500 rounded-full"></div>
-      <div className="absolute top-1/3 left-20 size-[14px] bg-orange-500 rounded-full"></div>
-      <div className="absolute top-40 right-40 size-5 bg-orange-500 rounded-full"></div>
+      <div className="absolute top-40 left-1/4 size-2 bg-orange-500 rounded-full animate-pulse hidden md:block"></div>
+      <div className="absolute top-1/3 right-56 size-[14px] bg-orange-500 rounded-full animate-pulse hidden md:block"></div>
+      <div className="absolute top-1/3 left-20 size-[14px] bg-orange-500 rounded-full animate-pulse hidden md:block"></div>
+      <div className="absolute top-40 right-40 size-5 bg-orange-500 rounded-full animate-pulse hidden md:block"></div>
 
     </section>
   );

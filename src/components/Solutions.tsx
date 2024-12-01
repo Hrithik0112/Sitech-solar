@@ -12,7 +12,7 @@ const Solutions: React.FC = () => {
           We Specialize In Delivering Innovative Solar Energy Solutions, Catering To Various Properties And Ensuring Efficiency And Sustainability.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Residential Card */}
           <div className="px-10 py-8 rounded-lg border border-gray-200 flex gap-x-4">
             <div className="text-orange-500">

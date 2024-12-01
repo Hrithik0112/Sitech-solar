@@ -5,7 +5,7 @@ const WhyUs: FC = () => {
     return (
         <section className="pb-16 pt-24 bg-gray-50" id="about">
             <div className="container mx-auto px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 space-x-20">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
 
                     <div className="space-y-8 ">
                         <h2 className="text-[54px] leading-[64px] font-semibold mb-8">Why We Are Best<br />From Other</h2>
@@ -68,7 +68,7 @@ const WhyUs: FC = () => {
                             </div>
                         </div>
 
-                        <div className="space-y-4 bg-[#FFECD9] py-20 pl-6 pr-4 rounded-r-[40px]">
+                        <div className="space-y-4 bg-[#FFECD9] py-20 pl-6 pr-4 sm:rounded-r-[40px] sm:rounded-bl-none rounded-b-[40px]">
                             <div className='flex space-x-4 '>
                             <div className='size-5 bg-orange-500 rounded-[4px] flex items-center justify-center flex-shrink-0'>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">

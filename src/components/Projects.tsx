@@ -5,7 +5,7 @@ const Projects: React.FC = () => {
   return (
     <section className="py-16" id="projects">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between h-full gap-x-8">
+        <div className="flex flex-col lg:flex-row justify-between h-full gap-8">
           {/* Left Content */}
           <div className="max-w-xl h-full ">
             <div className='flex flex-col gap-4'>
