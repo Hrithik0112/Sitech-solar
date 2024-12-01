@@ -1,11 +1,12 @@
 import { FC } from 'react';
 import HeroImage from "../assets/hero.png"
+import { Link } from 'react-router';
 
 const Hero: FC = () => {
   return (
     <section className="relative flex flex-col items-center bg-gradient-to-r from-white via-white to-[#f4f3d4] pt-32 pb-10">
       <div className="container mx-auto px-8 text-center flex flex-col items-center justify-center mb-20">
-        <h2 className="text-6xl font-bold text-orange-500 mb-6">
+        <h2 className="text-6xl font-anta font-semibold text-orange-500 mb-6">
           Si-Tech Solar
         </h2>
         <h1 className="text-5xl mb-4 font-light tracking-tight">
@@ -14,12 +15,14 @@ const Hero: FC = () => {
         <p className="text-5xl  mb-8 font-light tracking-tight">
           The Best Solar Power Provider in KSA
         </p>
+        <Link to="/contact">
         <button className="bg-black text-white px-8 py-4 rounded-full hover:bg-gray-800 inline-flex items-center gap-2">
           Contact us
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-          </svg>
-        </button>
+            </svg>
+          </button>
+        </Link>
       </div>
       <div className="  h-1/2">
         <img 

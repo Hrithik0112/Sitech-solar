@@ -1,11 +1,14 @@
 import { FC } from 'react';
 import Logo from "../assets/sitech-logo.png"
+import { Link } from 'react-router';
 
 const Navbar: FC = () => {
   return (
     <nav className="fixed top-0 w-full bg-white shadow-md z-50 flex justify-between items-center px-8 py-2">
       <div className="flex items-center">
-        <img src={Logo} alt="Si-Tech Solar" className="w-[84px] h-[58px]" />
+        <Link to="/">
+          <img src={Logo} alt="Si-Tech Solar" className="w-[84px] h-[58px]" />
+        </Link>
       </div>
       <div className="flex gap-8">
         <a href="#" className="hover:text-orange-500">Home</a>
@@ -15,7 +18,9 @@ const Navbar: FC = () => {
         <a href="#" className="hover:text-orange-500">FAQ's</a>
       </div>
       <button className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800">
-        Request a Quotes
+        <Link to="/contact">
+          Request a Quotes
+        </Link>
       </button>
     </nav>
   );

@@ -22,7 +22,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-24">
+    <div className="max-w-7xl mx-auto px-4 py-24 roboto-regular">
       <div className="mb-12">
         <h1 className="text-5xl font-bold mb-4">GET IN TOUCH</h1>
         <p className="text-xl">LET'S ANSWER YOUR QUERIES</p>

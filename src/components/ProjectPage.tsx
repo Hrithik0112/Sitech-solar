@@ -4,7 +4,7 @@ import FAQ from './FAQ';
 
 const ProjectPage: React.FC = () => {
   return (
-    <div>
+    <div className="roboto-regular">
     <AllProjects />
     <FAQ />
       
