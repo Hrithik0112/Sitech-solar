@@ -1,9 +1,10 @@
 import { FC, useState } from 'react';
 import Logo from "../assets/sitech-logo.png"
-import { Link, useLocation } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 const Navbar: FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
@@ -11,6 +12,11 @@ const Navbar: FC = () => {
       const element = document.getElementById(sectionId);
       element?.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleContact = () => {
+    navigate('/contact');
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -123,21 +129,22 @@ const Navbar: FC = () => {
         >
           FAQ's
         </Link>
-        <Link 
-          to="/contact"
+        <button 
           onClick={() => {
+            handleContact();
             setIsMenuOpen(false);
           }} 
-          className="py-2 hover:text-orange-500 bg-black text-white px-4  rounded-full w-fit"
+          className="py-2 hover:text-orange-500 bg-black text-white px-4 rounded-full w-fit"
         >
           Request a Quote
-        </Link>
+        </button>
       </div>
 
-      <button className="hidden md:block bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800">
-        <Link to="/contact">
-          Request a Quote
-        </Link>
+      <button 
+        onClick={handleContact} 
+        className="hidden md:block bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800"
+      >
+        Request a Quote
       </button>
     </nav>
   );
