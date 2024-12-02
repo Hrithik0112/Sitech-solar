@@ -1,4 +1,6 @@
 import { FC } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 interface Service {
   title: string;
@@ -6,6 +8,9 @@ interface Service {
 }
 
 const Services: FC = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
   const services: Service[] = [
     {
       title: "On-Grid Pv System",
@@ -58,20 +63,28 @@ const Services: FC = () => {
   ];
 
   return (
-    <section className="py-16" id="services">
+    <section className="py-16" id="services" ref={ref}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
+        <motion.div 
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: -20 }} 
+          animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : -20 }} 
+          transition={{ duration: 0.5 , delay: 0.7 }}
+        >
           <h2 className="text-[54px] leading-[80px] font-semibold mb-4">Services We Offer</h2>
           <p className="text-gray-600">
             Providing a Complete Range of Expert Solutions, Delivered Right to Your Doorstep
           </p>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service) => (
-            <div 
+          {services.map((service, index) => (
+            <motion.div 
               key={service.title}
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
+              initial={{ opacity: 0, scale: 0.8 }} 
+              animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0.8 }} 
+              transition={{ duration: 0.5, delay: index * 0.2 }}
             >
               <div className="aspect-w-16 aspect-h-12">
                 <img 
@@ -83,7 +96,7 @@ const Services: FC = () => {
               <div className="p-4">
                 <h3 className="text-lg font-medium">{service.title}</h3>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

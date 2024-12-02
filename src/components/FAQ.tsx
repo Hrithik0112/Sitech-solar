@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 interface FAQItem {
   question: string;
@@ -7,6 +8,9 @@ interface FAQItem {
 }
 
 const FAQ: FC = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
   const faqs: FAQItem[] = [
     {
       question: "How long does solar panel installation take?",
@@ -37,9 +41,16 @@ const FAQ: FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-16" id="faq">
+    <section className="py-16" id="faq" ref={ref}>
       <div className="container mx-auto px-8 flex flex-col max-w-[700px]">
-        <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+        <motion.h2 
+          className="text-3xl font-bold mb-8 text-center"
+          initial={{ opacity: 0, y: -20 }} 
+          animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : -20 }} 
+          transition={{ duration: 0.5 , delay: 0.4 }}
+        >
+          Frequently Asked Questions
+        </motion.h2>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div key={index} className="border-b rounded-lg">
@@ -62,7 +73,13 @@ const FAQ: FC = () => {
                     className="overflow-hidden "
                   >
                     <div className=" py-4 ">
-                      <p>{faq.answer}</p>
+                      <motion.p 
+                        initial={{ opacity: 0 }} 
+                        animate={{ opacity: isInView ? 1 : 0 }} 
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                      >
+                        {faq.answer}
+                      </motion.p>
                     </div>
                   </motion.div>
                 )}
