@@ -34,7 +34,7 @@ const Projects: React.FC = () => {
             </p>
             <motion.button 
               onClick={handleViewAll}
-              className="flex items-center gap-4 bg-black text-white px-8 py-5 rounded-lg"
+              className="flex items-center gap-4 bg-black text-white px-8 py-5 rounded-lg hover:bg-gray-800 transition-colors"
               initial={{ opacity: 0 }} 
               animate={{ opacity: isInView ? 1 : 0 }} 
               transition={{ duration: 0.5, delay: 0.3 }}

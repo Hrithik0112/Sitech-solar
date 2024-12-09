@@ -1,13 +1,36 @@
 import { FC } from 'react';
-
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router';
+import Logo from "../assets/sitech-logo.png"
 const Footer: FC = () => {
+  const navigate = useNavigate();
+
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleContact = () => {
+    navigate('/contact');
+    window.scrollTo(0, 0);
+  };
+
+  const handleHome = () => {
+    navigate('/');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="bg-black text-white py-16">
       <div className="container mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Logo Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold mb-6">Logo</h3>
+            <Link to="/" onClick={handleHome}>
+              <img src={Logo} alt="Si-Tech Solar" className="w-[84px] h-[58px]" />
+            </Link>
             <div className="space-y-2">
               <p className="text-sm text-gray-300">
                 The Leading Solar Energy Solutions
@@ -23,24 +46,36 @@ const Footer: FC = () => {
             <h3 className="text-xl font-bold mb-6">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                <Link to="/" 
+                  onClick={handleHome} 
+                  className="text-sm text-gray-300 hover:text-white"
+                >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                <Link to={location.pathname === '/' ? '#' : '#'} 
+                  onClick={() => scrollToSection('about')} 
+                  className="text-sm text-gray-300 hover:text-white"
+                >
                   About us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                <Link to={location.pathname === '/' ? '#' : '#'} 
+                  onClick={() => scrollToSection('projects')} 
+                  className="text-sm text-gray-300 hover:text-white"
+                >
                   Our Project
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                <Link to={location.pathname === '/' ? '#' : '#'} 
+                  onClick={() => scrollToSection('services')} 
+                  className="text-sm text-gray-300 hover:text-white"
+                >
                   Services
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -50,14 +85,20 @@ const Footer: FC = () => {
             <h3 className="text-xl font-bold mb-6">Info</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                <Link to={location.pathname === '/' ? '#' : '#'} 
+                  onClick={() => scrollToSection('faq')} 
+                  className="text-sm text-gray-300 hover:text-white"
+                >
                   FAQ's
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                <Link to="/contact" 
+                  onClick={handleContact} 
+                  className="text-sm text-gray-300 hover:text-white"
+                >
                   Contact us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

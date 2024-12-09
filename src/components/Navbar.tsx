@@ -41,6 +41,8 @@ const Navbar: FC = () => {
       </button>
 
       <div className="hidden md:flex gap-8">
+        {location.pathname !== '/projects' && (
+          <>
         <Link 
           to="/" 
           onClick={() => scrollToSection('home')} 
@@ -48,34 +50,36 @@ const Navbar: FC = () => {
         >
           Home
         </Link>
-        <Link 
-          to={location.pathname === '/' ? '#' : '#'} 
-          onClick={() => scrollToSection('about')} 
-          className="hover:text-orange-500"
-        >
-          About us
-        </Link>
-        <Link 
-          to={location.pathname === '/' ? '#' : '/projects'} 
-          onClick={() => scrollToSection('projects')} 
-          className="hover:text-orange-500"
-        >
-          Our Project
-        </Link>
-        <Link 
-          to={location.pathname === '/' ? '#' : '#'} 
-          onClick={() => scrollToSection('services')} 
-          className="hover:text-orange-500"
-        >
-          Services
-        </Link>
-        <Link 
-          to={location.pathname === '/' ? '#' : '#'} 
-          onClick={() => scrollToSection('faq')} 
-          className="hover:text-orange-500"
-        >
-          FAQ's
-        </Link>
+            <Link 
+              to={location.pathname === '/' ? '#' : '#'} 
+              onClick={() => scrollToSection('about')} 
+              className="hover:text-orange-500"
+            >
+              About us
+            </Link>
+            <Link 
+              to={location.pathname === '/' ? '#' : '/projects'} 
+              onClick={() => scrollToSection('projects')} 
+              className="hover:text-orange-500"
+            >
+              Our Project
+            </Link>
+            <Link 
+              to={location.pathname === '/' ? '#' : '#'} 
+              onClick={() => scrollToSection('services')} 
+              className="hover:text-orange-500"
+            >
+              Services
+            </Link>
+            <Link 
+              to={location.pathname === '/' ? '#' : '#'} 
+              onClick={() => scrollToSection('faq')} 
+              className="hover:text-orange-500"
+            >
+              FAQ's
+            </Link>
+          </>
+        )}
       </div>
 
       <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden absolute top-full left-0 right-0 flex-col bg-white shadow-md py-4 px-4 justify-center items-center`}>
@@ -140,12 +144,25 @@ const Navbar: FC = () => {
         </button>
       </div>
 
+      <div className="items-center gap-4 hidden md:flex">
+      <Link 
+          to="/" 
+          onClick={() => {
+            scrollToSection('home')
+            window.scrollTo(0, 0)
+          }} 
+          className={`hover:text-orange-500 ${location.pathname === '/projects' ? 'block' : 'hidden'} `}
+        >
+          Home
+        </Link>
       <button 
         onClick={handleContact} 
         className="hidden md:block bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800"
       >
         Request a Quote
       </button>
+      </div>
+
     </nav>
   );
 };

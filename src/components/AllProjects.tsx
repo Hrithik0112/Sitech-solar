@@ -19,7 +19,7 @@ const AllProjects: React.FC = () => {
             <span className="text-orange-500">Project</span> We Have Done
           </h2>
           <motion.p 
-            className="text-gray-700 text-lg leading-9 mx-20"
+            className="text-gray-700 text-lg leading-9 sm:mx-10 md:mx-14 mx-4 "
             initial={{ opacity: 0 }} 
             animate={{ opacity: isInView ? 1 : 0 }} 
             transition={{ duration: 0.5, delay: 0.2 }}
