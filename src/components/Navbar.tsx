@@ -1,21 +1,25 @@
 import { FC, useState } from 'react';
 import Logo from "../assets/sitech-logo.png"
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link, useNavigate, useLocation } from 'react-router';
 
 const Navbar: FC = () => {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId: string) => {
-    if (location.pathname === '/') {
-      const element = document.getElementById(sectionId);
-      element?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+
+  const handleHome = () => {
+      navigate('/');
+      window.scrollTo(0, 0);
+    };
 
   const handleContact = () => {
     navigate('/contact');
+    window.scrollTo(0, 0);
+  };
+
+  const handleProjects = () => {
+    navigate('/projects');
     window.scrollTo(0, 0);
   };
 
@@ -40,98 +44,49 @@ const Navbar: FC = () => {
         </svg>
       </button>
 
-      <div className="hidden md:flex gap-8">
-        {location.pathname !== '/projects' && (
-          <>
+      <div className="flex gap-8">
         <Link 
           to="/" 
-          onClick={() => scrollToSection('home')} 
-          className="hover:text-orange-500"
+          onClick={handleHome} 
+          className={`${location.pathname === '/' ? 'text-orange-500' : ''} hover:text-orange-500`}
         >
           Home
         </Link>
-            <Link 
-              to={location.pathname === '/' ? '#' : '#'} 
-              onClick={() => scrollToSection('about')} 
-              className="hover:text-orange-500"
-            >
-              About us
-            </Link>
-            <Link 
-              to={location.pathname === '/' ? '#' : '/projects'} 
-              onClick={() => scrollToSection('projects')} 
-              className="hover:text-orange-500"
-            >
-              Our Project
-            </Link>
-            <Link 
-              to={location.pathname === '/' ? '#' : '#'} 
-              onClick={() => scrollToSection('services')} 
-              className="hover:text-orange-500"
-            >
-              Services
-            </Link>
-            <Link 
-              to={location.pathname === '/' ? '#' : '#'} 
-              onClick={() => scrollToSection('faq')} 
-              className="hover:text-orange-500"
-            >
-              FAQ's
-            </Link>
-          </>
-        )}
+        <Link 
+          to='/projects' 
+          onClick={handleProjects}
+          className={`${location.pathname === '/projects' ? 'text-orange-500' : ''} hover:text-orange-500`}
+        >
+          Our Projects
+        </Link>
+        <Link 
+          to='/contact' 
+          className={`${location.pathname === '/contact' ? 'text-orange-500' : ''} hover:text-orange-500`}
+        >
+          Contact Us
+        </Link>
       </div>
 
       <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden absolute top-full left-0 right-0 flex-col bg-white shadow-md py-4 px-4 justify-center items-center`}>
         <Link 
           to="/" 
-          onClick={() => {
-            scrollToSection('home');
-            setIsMenuOpen(false);
-          }} 
-          className="py-2 hover:text-orange-500"
+          onClick={handleHome} 
+          className={`py-2 ${location.pathname === '/' ? 'text-orange-500' : ''} hover:text-orange-500`}
         >
           Home
         </Link>
         <Link 
-          to={location.pathname === '/' ? '#' : '#'} 
-          onClick={() => {
-            scrollToSection('about');
-            setIsMenuOpen(false);
-          }} 
-          className="py-2 hover:text-orange-500"
+          to='/projects' 
+          onClick={handleProjects}
+          className={`py-2 ${location.pathname === '/projects' ? 'text-orange-500' : ''} hover:text-orange-500`}
         >
-          About us
+          Our Projects
         </Link>
         <Link 
-          to={location.pathname === '/' ? '#' : '/projects'} 
-          onClick={() => {
-            scrollToSection('projects');
-            setIsMenuOpen(false);
-          }} 
-          className="py-2 hover:text-orange-500"
+          to='/contact' 
+          className={`py-2 ${location.pathname === '/contact' ? 'text-orange-500' : ''} hover:text-orange-500`}
         >
-          Our Project
-        </Link>
-        <Link 
-          to={location.pathname === '/' ? '#' : '#'} 
-          onClick={() => {
-            scrollToSection('services');
-            setIsMenuOpen(false);
-          }} 
-          className="py-2 hover:text-orange-500"
-        >
-          Services
-        </Link>
-        <Link 
-          to={location.pathname === '/' ? '#' : '#'} 
-          onClick={() => {
-            scrollToSection('faq');
-            setIsMenuOpen(false);
-          }} 
-          className="py-2 hover:text-orange-500"
-        >
-          FAQ's
+          Contact Us
         </Link>
         <button 
           onClick={() => {
@@ -144,24 +99,12 @@ const Navbar: FC = () => {
         </button>
       </div>
 
-      <div className="items-center gap-4 hidden md:flex">
-      <Link 
-          to="/" 
-          onClick={() => {
-            scrollToSection('home')
-            window.scrollTo(0, 0)
-          }} 
-          className={`hover:text-orange-500 ${location.pathname === '/projects' ? 'block' : 'hidden'} `}
-        >
-          Home
-        </Link>
       <button 
         onClick={handleContact} 
         className="hidden md:block bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800"
       >
         Request a Quote
       </button>
-      </div>
 
     </nav>
   );
